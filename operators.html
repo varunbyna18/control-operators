@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>All-in-One JavaScript Example</title>
+</head>
+<body>
+  <h2>JavaScript Examples</h2>
+
+  <!-- Type Conversion -->
+  <h3>1. Type Conversion</h3>
+  <input type="text" id="numStr" placeholder="Enter a number as text">
+  <button onclick="typeConversion()">Convert</button>
+  <div id="typeOutput"></div>
+
+  <!-- Operators -->
+  <h3>2. Operators</h3>
+  <input type="number" id="op1" placeholder="Enter first number">
+  <input type="number" id="op2" placeholder="Enter second number">
+  <button onclick="operators()">Check Operators</button>
+  <div id="opOutput"></div>
+
+  <!-- If Else -->
+  <h3>3. If-Else</h3>
+  <input type="number" id="age" placeholder="Enter Age">
+  <button onclick="checkAge()">Check</button>
+  <div id="ifOutput"></div>
+
+  <!-- Loops -->
+  <h3>4. Loops</h3>
+  <input type="number" id="loopNum" placeholder="Enter number for loops">
+  <button onclick="loopExamples()">Show Loops</button>
+  <div id="loopOutput"></div>
+
+  <!-- Switch Case -->
+  <h3>5. Switch Case</h3>
+  <input type="text" id="day" placeholder="Enter day (mon/tue)">
+  <button onclick="switchExample()">Check Day</button>
+  <div id="switchOutput"></div>
+
+  <!-- Functions -->
+  <h3>6. Functions</h3>
+  <input type="number" id="fn1" placeholder="Enter a number">
+  <button onclick="squareNum()">Square</button>
+  <div id="fnOutput"></div>
+
+  <script>
+    // 1. Type Conversion
+    function typeConversion() {
+      let str = document.getElementById("numStr").value;
+      let intVal = parseInt(str);
+      let floatVal = parseFloat(str);
+      let boolVal = Boolean(str);
+
+      document.getElementById("typeOutput").innerHTML =
+        "String: " + str + "<br>" +
+        "Integer: " + intVal + "<br>" +
+        "Float: " + floatVal + "<br>" +
+        "Boolean: " + boolVal;
+    }
+
+    // 2. Operators
+    function operators() {
+      let a = Number(document.getElementById("op1").value);
+      let b = Number(document.getElementById("op2").value);
+
+      let out = "<b>Arithmetic</b><br>";
+      out += a + " + " + b + " = " + (a + b) + "<br>";
+      out += a + " - " + b + " = " + (a - b) + "<br>";
+      out += a + " * " + b + " = " + (a * b) + "<br>";
+      out += a + " / " + b + " = " + (a / b) + "<br>";
+      out += a + " % " + b + " = " + (a % b) + "<br><br>";
+
+      out += "<b>Logical</b><br>";
+      out += a + " > 0 && " + b + " > 0 = " + (a > 0 && b > 0) + "<br>";
+      out += a + " > 0 || " + b + " > 0 = " + (a > 0 || b > 0) + "<br>";
+      out += "!(" + a + " > 0) = " + (!(a > 0)) + "<br>";
+
+      document.getElementById("opOutput").innerHTML = out;
+    }
+
+    // 3. If-Else
+    function checkAge() {
+      let age = Number(document.getElementById("age").value);
+      let msg = "";
+      if (age >= 18) {
+        msg = "You are an Adult";
+      } else {
+        msg = "You are a Minor";
+      }
+      document.getElementById("ifOutput").innerHTML = msg;
+    }
+
+    // 4. Loops
+    function loopExamples() {
+      let n = Number(document.getElementById("loopNum").value);
+      let out = "<b>For Loop:</b> ";
+      for (let i = 1; i <= n; i++) {
+        out += i + " ";
+      }
+
+      out += "<br><b>While Loop:</b> ";
+      let j = 1;
+      while (j <= n) {
+        out += j + " ";
+        j++;
+      }
+
+      out += "<br><b>For...in Loop (Object):</b> ";
+      let obj = {a:1, b:2, c:3};
+      for (let key in obj) {
+        out += key + ":" + obj[key] + " ";
+      }
+
+      out += "<br><b>For...of Loop (Array):</b> ";
+      let arr = [10, 20, 30];
+      for (let val of arr) {
+        out += val + " ";
+      }
+
+      document.getElementById("loopOutput").innerHTML = out;
+    }
+
+    // 5. Switch Case
+    function switchExample() {
+      let day = document.getElementById("day").value.toLowerCase();
+      let msg = "";
+      switch(day) {
+        case "mon": msg = "Start of Week"; break;
+        case "tue": msg = "Second Day"; break;
+        case "wed": msg = "Mid Week"; break;
+        case "thu": msg = "Almost Friday"; break;
+        case "fri": msg = "Weekend Coming"; break;
+        case "sat": 
+        case "sun": msg = "Weekend!"; break;
+        default: msg = "Invalid day";
+      }
+      document.getElementById("switchOutput").innerHTML = msg;
+    }
+
+    // 6. Functions
+    function squareNum() {
+      let n = Number(document.getElementById("fn1").value);
+      function square(x) {
+        return x * x;
+      }
+      document.getElementById("fnOutput").innerHTML = 
+        "Square of " + n + " = " + square(n);
+    }
+  </script>
+
+</body>
+</html>
